@@ -1,6 +1,6 @@
 <?php
 
-$stu_id = $_GET['id'];
+$stu_id = $_GET['id']; //get id from url bar 
 
 include 'config.php';
 

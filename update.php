@@ -1,4 +1,5 @@
 <?php include 'header.php'; ?>
+
 <div id="main-content">
     <h2>Edit Record</h2>
     <form class="post-form" action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
@@ -59,6 +60,8 @@
     </form>
     <?php
   }
+}else{
+  echo "<h3>No Record Found</h3>";
 }
 }
 

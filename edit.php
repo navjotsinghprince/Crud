@@ -5,17 +5,19 @@
     <?php
     include 'config.php';
 
-    $stu_id = $_GET['id'];
+    $stu_id = $_GET['id'];    //get id from url bar
 
     $sql = "SELECT * FROM student WHERE sid = {$stu_id}";
     $result = mysqli_query($conn, $sql) or die("Query Unsuccessful.");
 
     if(mysqli_num_rows($result) > 0)  {
       while($row = mysqli_fetch_assoc($result)){
+       
     ?>
     <form class="post-form" action="updatedata.php" method="post">
       <div class="form-group">
           <label>Name</label>
+          <!-- use input type hidden for particular student id -->
           <input type="hidden" name="sid" value="<?php echo $row['sid']; ?>"/>
           <input type="text" name="sname" value="<?php echo $row['sname']; ?>"/>
       </div>
@@ -30,18 +32,20 @@
             $result1 = mysqli_query($conn, $sql1) or die("Query Unsuccessful.");
 
             if(mysqli_num_rows($result1) > 0)  {
-              echo '<select name="sclass">';
+              echo '<select name="sclass">'; 
               while($row1 = mysqli_fetch_assoc($result1)){
-                if($row['sclass'] == $row1['cid']){
-                  $select = "selected";
+             
+                if($row['sclass'] == $row1['cid']){ //3==1,fir 3
+                   $select = "selected";
                 }else{
-                  $select = "";
-                }
-                echo  "<option {$select} value='{$row1['cid']}'>{$row1['cname']}</option>";
+                 $select = "";
+                 }
+               
+                echo "<option {$select} value='{$row1['cid']}'> {$row1['cname']} </option>";
               }
           echo "</select>";
         }
-            ?>
+        ?>
       </div>
       <div class="form-group">
           <label>Phone</label>

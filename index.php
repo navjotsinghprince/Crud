@@ -23,22 +23,23 @@ include 'header.php';
         <tbody>
           <?php
             while($row = mysqli_fetch_assoc($result)){
+             echo "<tr>
+             <td>{$row['sid']}</td>
+             <td>{$row['sname']}</td>
+             <td>{$row['saddress']}</td>
+             <td>{$row['cname']}</td>
+             <td>{$row['sphone']}</td>
+             <td> 
+             <a href='edit.php?id={$row['sid']}'>Edit</a> 
+             <a href='delete-inline.php?id={$row['sid']}'>Delete</a>
+             </td>
+            </tr>";
           ?>
-            <tr>
-                <td><?php echo $row['sid']; ?></td>
-                <td><?php echo $row['sname']; ?></td>
-                <td><?php echo $row['saddress']; ?></td>
-                <td><?php echo $row['cname']; ?></td>
-                <td><?php echo $row['sphone']; ?></td>
-                <td>
-                    <a href='edit.php?id=<?php echo $row['sid']; ?>'>Edit</a>
-                    <a href='delete-inline.php?id=<?php echo $row['sid']; ?>'>Delete</a>
-                </td>
-            </tr>
           <?php } ?>
         </tbody>
     </table>
-  <?php }else{
+    <?php 
+  }else{
     echo "<h2>No Record Found</h2>";
   }
   mysqli_close($conn);

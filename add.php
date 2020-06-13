@@ -13,6 +13,7 @@
         <div class="form-group">
             <label>Class</label>
             <select name="class">
+            <!-- ye by default selected aur disabled hoga -->
                 <option value="" selected disabled>Select Class</option>
                 <?php
                 include 'config.php';
@@ -22,6 +23,7 @@
 
                 while($row = mysqli_fetch_assoc($result)){
                 ?>
+                
                 <option value="<?php echo $row['cid']; ?>"><?php echo $row['cname']; ?></option>
 
               <?php } ?>
